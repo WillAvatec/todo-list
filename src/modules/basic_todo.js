@@ -2,7 +2,7 @@
 
     // Trying to use some get and set functions(Not real getters and setters, btw)
 
-    class Todo {
+export default class Todo {
         #title;
         
         constructor(title){
@@ -23,16 +23,3 @@
         }
     
     }
-    
-    const defaultProject = [];
-    
-    const one = new Todo("Life");
-    
-    
-    
-    // The logic of the app, is going to be:
-    
-        // Create projects arrays,
-        // Create a todo,
-        // Add it to the current project,
-        // 
