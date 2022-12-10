@@ -15,7 +15,7 @@
             <nav class="side">
                 <li><a href="#">My List</a></li>
                 <li><a href="#">Projects</a></li>
-                <li><a href="#">+ New List</a></li>
+                <button>+ New List</button>
             </nav>
         </div>
         <div class="main-container">
@@ -29,9 +29,19 @@
                     <div class="modal">
                         <div class="form">
                             <form action="#">
-                                <div class="title-cont"><label for=""></label><input type="text" name="" id=""></div>
-                                <div class="description"><label for=""></label><input type="text" name="" id=""></div>
-                                <div class="dueTime"><label for=""></label><input type="text" name="" id=""></div>
+                                <div class="title-cont">
+                                    <label for="title">Title :</label>
+                                    <input type="text" name="title" id="title">
+                                </div>
+                                <div class="description">
+                                    <label for="descript">Description :</label>
+                                    <input type="text" name="descript" id="descript">
+                                </div>
+                                <div class="dueTime">
+                                    <label for="due">Expiration Date :</label>
+                                    <input type="text" name="due" id="due">
+                                </div>
+                                <button type="submit">Crear Todo</button>
                             </form>
                         </div>
                     </div>
@@ -39,6 +49,6 @@
             </main>
         </div>
     </div>
-    <script type="module" src="../src/main.js"></script>
+    <script src="../src/modules/dom_logic.js"></script>
 </body>
 </html>
