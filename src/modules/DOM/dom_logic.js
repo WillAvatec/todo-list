@@ -1,18 +1,13 @@
-const list = document.querySelector('.todo-container');
+const createCard = (form) =>{
 
-const submit = document.querySelector('form button');
+    const list = document.querySelector('.todo-container');
 
-let form;
+    const div = document.createElement('div');
+    const title = document.createElement('p');
+    title.textContent = form.dataTitle;
+    div.className = 'todo-card';
+    div.appendChild(title);
+    list.appendChild(div);
+}
 
-// Cuando se presione el boton submit, crear new div con los datos de tal.
-
-submit.addEventListener('click',(ev)=>{
-    ev.preventDefault();
-    let dataTitle = document.querySelector('#title').value;
-    let dataDescript = document.querySelector('#descript').value;
-    let dueTime = document.querySelector('#due').value;
-
-    form = {dataTitle,dataDescript,dueTime}
-})
-
-export {form}
+export {createCard};
