@@ -3,7 +3,6 @@ export default class Element {
         this.tag = tag;
         this.attributes = {};
         this.children = [];
-        this.listeners = {click:'ev'};
     }
     
     build(){
@@ -23,23 +22,17 @@ export default class Element {
         for (const child in this.children){
             element.appendChild(child,this.children);
         } */
-
-        // Append eventListeners to element
-
-        for (const listen in this.listeners){
-            this.listeners[listen].forEach(cb =>{
-                element.addEventListener(listen,cb);
-            })
-        }
         
         // Append childs only if the element doesn't have text
 
-        if(this.text !== undefined ){
-            for(const virtual of children ){
+        if(this.text === undefined ){
+            for(const virtual of this.children ){
                 element.appendChild(virtual.build())
             }
         }else {
-            document.textContent = this.text;
+            let text = document.createTextNode(this.text);
+            element.appendChild(text);
+
         }
 
         // After taking the element here and there, finally let's return it like [  let variable =  whatever.build()   ===   variable = element   ]
@@ -66,13 +59,4 @@ export default class Element {
         return this;
     }
 
-    setListeners(e,callback){
-        if(this.listeners[e]){
-            this.listeners.push(callback)
-        }else {
-            [callback] = this.listeners[e] ;
-        }
-
-        return this;
-    }
 }
