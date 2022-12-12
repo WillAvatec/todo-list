@@ -1,9 +1,7 @@
-import { head,sidebar } from "./modules/renderHome";
 import { formatDistance, subDays } from "date-fns";
+import { elementHelper } from "./modules/Classes/elementCreator";
 
 const one = formatDistance(subDays(new Date(),5),new Date(),{addSuffix:true});
 
-console.log(one)
+const container = document.querySelector('.container');
 
-head()
-sidebar()
