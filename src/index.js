@@ -1,32 +1,39 @@
-import { formatDistance, subDays } from "date-fns";
 import Project from '../src/modules/Classes/projects.js';
-import { renderTodo } from "./modules/renderTodo.js";
-import { form_handler } from "./modules/Classes/DOMDataHandle.js";
 import Todo from "./modules/Classes/todo";
-
-// When user clicks new project create current project
+import { renderTodo, renderTodoForm } from "./modules/renderTodo.js";
+import { form_handler } from "./modules/Classes/DOMDataHandle.js";
 
 const defaultProject = new Project('default');
+const one = new Todo('Love','low','2022','not yet');
+defaultProject.pushTodo(one);
 
-const one = new Todo('Love','low','2022','not yet')
+const container = document.querySelector('.content');
 
-const newProjectBtn = document.querySelector('.add-project-btn');
 
-newProjectBtn.addEventListener('click',()=>{
-    renderTodo(one)
+// When the user clicks on the todoBtn clicks change DOM main into a form
+
+const todoBtn = document.querySelector('.todo-btn');
+
+todoBtn.addEventListener('click',()=>{
+    container.innerHTML = '';       //Prevent multiple forms rendered
+    renderTodoForm()
 })
 
+// When the user clicks on the submit button, create a new Todo object,
+// and render the Project todos
 
+document.addEventListener('click',(ev)=>{
+    const target = ev.target.closest('form > button');
+        if(target){
+            ev.preventDefault();                 // Prevent the page from recharge
 
-// When the user clicks change DOM main into a form
+            const element = form_handler()       // Return new Todo Object
 
-/* const newTodoBtn = document.querySelector('todoBtn');
+            defaultProject.pushTodo(element);    // Push to the current Project
 
-newTodoBtn.addEventListener('click',()=>{
-    
+            container.innerHTML = '';
+            renderTodo(element)                  // Show selected project todos  
 
-    // Replace main content with a form for the 
-    // with a button that returns an Todo object
-}) */
-
-// When the user clicks on the Create button, 
+            console.log('Event listener now works')            
+        }
+})
