@@ -65,6 +65,7 @@ body {
     border-style: none;
     padding: 8px;
     border-radius: 3px;
+    cursor: pointer;
   }
   button:active {
     background-color: pink;
@@ -124,3 +125,25 @@ body {
     margin: 20px;
     border-radius: 3px;
   }
+
+.todo-form, .todo-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  padding: 20px;
+  border: 2px solid var(--bg-light);
+  border-radius: 10px;
+  font-size: 1.3rem;
+  margin-left: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.todo-form > p{
+  font-weight: 800;
+  font-size: 2rem;
+}
+
+.priority-container {
+  display: flex;
+  flex-direction: row;
+}
