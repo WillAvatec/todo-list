@@ -66,7 +66,7 @@ export const renderTodoForm = () => {
 
 // This renders all the todos in the current project
 
-export const renderProjects = (element) => {
+export const renderProject = (element) => {
 
     element.array.forEach(todo => {
         renderTodo(todo);
@@ -80,7 +80,7 @@ export const renderInput = (btn)=> {
     const Close = elementHelper('button',{class:'close'},['Cerrar'])
     const Accept = elementHelper('button',{class:'accept'},['Aceptar'])
     const titleInput = elementHelper('input',{class:'new-project'});
-    const div = elementHelper('div',{},[titleInput,Accept,Close]);
+    const div = elementHelper('div',{class:'project-input'},[titleInput,Accept,Close]);
 
     btn.before(div);
 }
