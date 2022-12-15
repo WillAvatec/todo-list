@@ -12,11 +12,13 @@ const container = document.querySelector('.content');
 
 export const renderTodo = (todo) => {
 
+    const close = elementHelper('button',{id:'close'},['X'])
+
     const priority = elementHelper('p',{id:'priority'},[
         `Priority : ${todo.priority}`
     ])
     const title = elementHelper('h4',{class:'title'},[todo.todoTitle])
-    const div = elementHelper('div',{class:'todo-container'},[title,priority]);
+    const div = elementHelper('div',{class:'todo-container'},[close,title,priority]);
 
     container.appendChild(div);
     console.log('Todo Rendered')
@@ -60,4 +62,25 @@ export const renderTodoForm = () => {
 
 
     console.log('Form Rendered');
+}
+
+// This renders all the todos in the current project
+
+export const renderProjects = (element) => {
+
+    element.array.forEach(todo => {
+        renderTodo(todo);
+    });
+}
+
+// This renders an input for the creation of new  projects
+
+export const renderInput = (btn)=> {
+
+    const Close = elementHelper('button',{class:'close'},['Cerrar'])
+    const Accept = elementHelper('button',{class:'accept'},['Aceptar'])
+    const titleInput = elementHelper('input',{class:'new-project'});
+    const div = elementHelper('div',{},[titleInput,Accept,Close]);
+
+    btn.before(div);
 }
