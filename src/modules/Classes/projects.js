@@ -7,4 +7,8 @@ export default class Project {
     pushTodo(todo){
         this.array.push(todo);
     }
+
+    get Array(){
+        return this.array
+    }
 }
