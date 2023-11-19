@@ -13,15 +13,18 @@ const container = document.querySelector('.content');
 export const renderTodo = (todo) => {
 
     const close = elementHelper('button',{id:'close'},['X'])
-
+ 
     const priority = elementHelper('p',{id:'priority'},[
-        `Priority : ${todo.priority}`
+        `Priority : ${todo.priority.toUpperCase()}`
     ])
     const title = elementHelper('h4',{class:'title'},[todo.todoTitle])
-    const div = elementHelper('div',{class:'todo-container'},[close,title,priority]);
+    const body = elementHelper('div',{class:'body'},[priority]);
+    const head = elementHelper('div',{class:'head'},[title])
+    const card_body = elementHelper('div',{class:'todo-body'},[close,head,body])
+    const div = elementHelper('div',{class:'todo-card'},[card_body]);
+
 
     container.appendChild(div);
-    console.log('Todo Rendered')
 }
 
 
@@ -60,15 +63,14 @@ export const renderTodoForm = () => {
     PriorityInput2.before('Alta');
     PriorityInput1.before('Baja');
 
-
-    console.log('Form Rendered');
 }
 
 // This renders all the todos in the current project
 
-export const renderProject = (element) => {
+export const renderProject = (project) => {
 
-    element.array.forEach(todo => {
+    container.innerHTML = '';
+    project.array.forEach(todo => {
         renderTodo(todo);
     });
 }
@@ -77,10 +79,10 @@ export const renderProject = (element) => {
 
 export const renderInput = (btn)=> {
 
-    const Close = elementHelper('button',{class:'close'},['Cerrar'])
-    const Accept = elementHelper('button',{class:'accept'},['Aceptar'])
-    const titleInput = elementHelper('input',{class:'new-project'});
-    const div = elementHelper('div',{class:'project-input'},[titleInput,Accept,Close]);
+    const Close =       elementHelper('button',{class:'close'},['Cerrar'])
+    const Accept =      elementHelper('button',{class:'accept'},['Aceptar'])
+    const titleInput =  elementHelper('input',{class:'new-project'});
+    const div =         elementHelper('div',{class:'project-input'},[titleInput,Accept,Close]);
 
     btn.before(div);
 }

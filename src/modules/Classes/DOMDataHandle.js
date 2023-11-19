@@ -1,3 +1,5 @@
+import { setFoo } from '../../index.js';
+import { renderProject } from '../renderFuncs.js';
 import { elementHelper } from './elementCreator.js'
 import Todo from './todo.js';
 
@@ -14,24 +16,25 @@ export const form_handler = () => {
     return el
 }
 
-// This function will be in charge of creating a new 'Project',
-// Whenever the newProjectButton is clicked, also makes a
-// simple input on the form, so maybe this could need function inside
+let counter = 0;
 
-export const folder_handler = () => {
-
-    const name = document.querySelector()    
+export const folder_handler = (element,project) => {
 
 
-    function folderInput(){
+    const button = elementHelper('button',{class:'project-btn'},[`${element.name}`]);
 
-        // This will create an input whenever the button is touched
+    button.dataset.index = counter;
+    counter = counter + 1;
+    const newProjectButton = document.querySelector('#project')
 
+    button.addEventListener('click',()=>{       // Start event listener
+        
+        renderProject(project);                 /* Iterate over all todos in the project,
+                                                  render them. */
+        console.log(project);
+        setFoo(project);                 
+    })
 
-        // IMPORTANT : 
+    newProjectButton.before(button);
 
-        // DONT MIX LOGIC WITH DOM MANIPULATION
-
-        // THAT IS PART OF THE TASK OF THIS PROJECT
-    }
 }

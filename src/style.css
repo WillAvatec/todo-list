@@ -1,150 +1,230 @@
-body {
-    --bg-color-main: rgb(211, 187, 247);
-    --bg-light: rgb(249, 248, 250);
-    --bg-gray: rgb(150, 146, 146);
-    --text-color-main: rgb(2, 2, 2);
-  
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    padding: 0;
-    margin: 0;
-    color: var(--text-color-main);
-    background-color: var(--bg-color-main);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  }
-  
-  .dark {
-    /* Dark-mode */
-    --bg-color-main: rgb(24, 11, 44);
-    --bg-light: rgb(41, 27, 61);
-    --bg-gray: rgb(26, 25, 25);
-    --text-color-main: white;
-  }
-  
-  h1 {
-    font-size: clamp(1.5rem, 2vw, 2rem);
-  }
-  
-  .side {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: flex-start;
-    justify-content: flex-start;
-    min-width: 200px;
-    max-width: 300px;
-    width: 25vw;
-    height: 100vh;
-    background-color: var(--bg-light);
-    box-sizing: border-box;
-    padding: 0 10px;
-  }
-  
-  .container {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    width: 70vw;
-    height: 100%;
-  }
-  .nav {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 100vw;
-    height: 15vh;
-    background-color: var(--bg-light);
-    box-sizing: border-box;
-    padding-bottom: 0;
-  }
-  button {
-    border-style: none;
-    padding: 8px;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  button:active {
-    background-color: pink;
-  }
-  .nav button {
-    align-self: flex-end;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    margin-right: clamp(5px, 3.5vw, 50px);
-    padding: clamp(5px, 2vw, 10px);
-    padding-bottom: 0;
-    background-color: var(--bg-color-main);
-    font-size: clamp(0.8rem, 1vw, 0.9rem);
-    color: var(--text-color-main);
-  }
-  .content {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 100%;
-    padding: 10px;
-  }
-  
-  .project {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: flex-start;
-    width: 100%;
-  }
-  
-  .date-tab {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: flex-start;
-    width: 100%;
-  }
-  .project h1,
-  .date-tab h1 {
-    box-sizing: border-box;
-    padding: 5px;
-  }
-  
-  ul {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: flex-start;
-  
-    list-style-type: none;
-    padding: 0;
-    width: 100%;
-  }
-  
-  li {
-    background-color: var(--bg-gray);
-    width: clamp(25ch, 5vw, 35ch);
-    margin: 20px;
-    border-radius: 3px;
-  }
+:root{
+  --border-color: linear-gradient(to right, tomato 0%, gold 100%);
+  --title-border: linear-gradient(to left, tomato 0%, gold 100%);
+  --black-color: #222;
+  --bg-color: #121212;
+  --darkest: 	#1e1e1e;
+  --dark: #252526;
+  --greyest: #2d2d30;
+  --grey: #3e3e42;
+}
 
-.todo-form, .todo-container {
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: minmax(300px,20%) 1fr;
+  grid-template-rows: 60px 1fr;
+  height: 100%;
+  background: var(--grey);
+  color:white;
+}
+
+.wrapper h1 {
+  grid-area: 1/1/2/2;
+  border-bottom: 1.5px solid tomato;
+  border-image: var(--title-border) 1 stretch;
+  background: var(--darkest);
+  text-align: center;
+  padding-top: 5px;
+}
+
+.side-bar {
+  grid-area: 2/1/3/2;
+/*   border-right: 1.5px solid tomato;
+  border-image: var(--side-bar-border) 1 stretch; */
+  background: var(--greyest);
+  box-shadow: 0 1px 1px var(--black-color);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.side-bar > button {
+  margin-left: 10px;
+  margin-top: 2rem;
+}
+
+.side-bar > h2 {
+  align-self: flex-start;
+  margin : 3rem 0;
+}
+
+.project-list-container {
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.project-list-container button {
+  margin: 0.6rem ;
+}
+
+.project-input {
+  margin-left: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+}
+
+.project-input > input {
+  flex: 1;
+}
+
+.nav-container {
+  grid-area: 1/2/2/3;
+  background: var(--dark);
+  border-bottom: 1.5px solid tomato;
+  border-image: var(--border-color) 1 stretch;
+  background: var(--darkest);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+
+}
+
+.content {
+  grid-area: 2/2/3/3;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+}
+
+.todo-card {
+  background: var(--border-color);
+  aspect-ratio: 10/16;
+  width: 200px;
+  padding: 5px;
+  border-radius: 16px;
+  position: relative;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.todo-body {
+  background: var(--black-color);
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
-  padding: 20px;
-  border: 2px solid var(--bg-light);
-  border-radius: 10px;
+  justify-content: center;
+  align-items: flex-start;
+  color: white;
   font-size: 1.3rem;
-  margin-left: 1.5rem;
-  margin-top: 1.5rem;
 }
 
-.todo-form > p{
-  font-weight: 800;
-  font-size: 2rem;
+.todo-body > #priority {
+  align-self: center;
 }
 
-.priority-container {
+.todo-body button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+  border: 0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 2.5;
+  outline: transparent;
+  font-family: expo-brand-demi,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.body,.head {
+  flex: 1;
+  align-self: center;
+  justify-self: center;
+}
+
+.head {
+  margin-top: 3rem;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
+}
+
+.title {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+button{
+  align-items: center;
+  background-color: initial;
+  background-image: linear-gradient(#464d55, #25292e);
+  border-radius: 8px;
+  border-width: 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .1),0 3px 6px rgba(0, 0, 0, .05);
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  font-family: expo-brand-demi,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 18px;
+  height: 52px;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  overflow: hidden;
+  padding: 0 32px;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all 150ms;
+  vertical-align: baseline;
+  white-space: normal;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button.accept {
+  background-image: linear-gradient(darkolivegreen, rgb(24, 93, 24));
+}
+
+button.close {
+  background-image: linear-gradient(tomato, rgb(226, 68, 68));
+}
+
+.nav-container > .nav {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.todo-form {
+  background: var(--dark);
+  width: 300;
+  height: 300;
+  display: flex;
+  flex-flow: column nowrap;
+  row-gap: 2em;
+  font-size: 1.2rem;
+  padding: 30px;
+  margin: 1.5rem 0 0 2rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 5px white, 0 2px 7px var(--dark);
 }
 
 .disable {
